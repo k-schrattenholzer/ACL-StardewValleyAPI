@@ -19,24 +19,23 @@ describe('backend routes', () => {
       .send({
         name: "Jazz Seeds",
         crop: "Blue Jazz",
-        growth_time: 7,
-        season: "Spring",
+        abt: "Plant these in the summer. Takes 12 days to mature.",
         sell_price: "15g",
         img: 'https://stardewvalleywiki.com/mediawiki/images/9/95/Jazz_Seeds.png'
       })
 
     const expectation = {
+      id: expect.any(Number),
       name: "Jazz Seeds",
       crop: "Blue Jazz",
-      growth_time: 7,
-      season: "Spring",
+      abt: "Plant these in the summer. Takes 12 days to mature.",
       sell_price: "15g",
       img: 'https://stardewvalleywiki.com/mediawiki/images/9/95/Jazz_Seeds.png'
     }
 
       expect(res.body).toEqual(expectation)
 
-      await Seed.deleteById(res.body.id)
+      // await Seed.deleteById(res.body.id)
   })
 
 });

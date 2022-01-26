@@ -18,7 +18,7 @@
 	"elligible": "false",
 	"img": "https://stardewvalleywiki.com/mediawiki/images/8/8e/Evelyn.png",
 	"best_gifts": "{'Beet'}, {'Chocolate Cake'}, {'Diamond'}, {'Fairy Rose'}, {'Stuffing'}, {'Tulip'}",
-	"about":“Evelyn has lived in Pelican Town her entire life. Always hopeful and optimistic, "Granny" spends her days tending the town gardens, baking her signature cookies, and reminiscing about Stardew Valley's vibrant past.”
+	"about":"Evelyn has lived in Pelican Town her entire life. Always hopeful and optimistic, \"Granny\" spends her days tending the town gardens, baking her signature cookies, and reminiscing about Stardew Valley's vibrant past."
 },
 {
     "name": "George",

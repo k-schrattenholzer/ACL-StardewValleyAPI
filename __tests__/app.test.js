@@ -22,7 +22,8 @@ describe('backend routes', () => {
         address: "666 Highway to Hell",
         elligible: "very",
         img: "https://darklord.com/img/666.png",
-        best_gifts: "{'Bean Hotpot'}, {'Ice Cream'}"
+        best_gifts: "{'Bean Hotpot'}, {'Ice Cream'}",
+        about:"I am a spooky kinda dude"
       })
 
     const expectation = {
@@ -32,7 +33,8 @@ describe('backend routes', () => {
         address: "666 Highway to Hell",
         elligible: "very",
         img: "https://darklord.com/img/666.png",
-        best_gifts: ["{'Bean Hotpot'}, {'Ice Cream'}"]
+        best_gifts: ["{'Bean Hotpot'}, {'Ice Cream'}"],
+        about:"I am a spooky kinda dude"
     }
 
       expect(res.body).toEqual(expectation)
@@ -47,7 +49,8 @@ describe('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
-      best_gifts: "{'Ice Cream'}, {'Strawberry'}"
+      best_gifts: "{'Ice Cream'}, {'Strawberry'}",
+      about:"I am not really a spooky kinda dude"
     })
 
     const res = await request(app)
@@ -60,7 +63,8 @@ describe('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
-      best_gifts: ["{'Ice Cream'}, {'Strawberry'}"]
+      best_gifts: ["{'Ice Cream'}, {'Strawberry'}"],
+      about:"I am not really a spooky kinda dude"
   }
 
     expect(res.body).toEqual(expectation)
@@ -75,7 +79,8 @@ describe('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
-      best_gifts: "{'Ice Cream'}, {'Strawberry'}"
+      best_gifts: "{'Ice Cream'}, {'Strawberry'}",
+      about:"I am not really a spooky kinda dude"
     })
     const char2 = await Character.insert({
       name: "Assistant to the Regional Dark Lord Assistant",
@@ -83,7 +88,8 @@ describe('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "true",
       img: "https://darklord.com/img/333.png",
-      best_gifts: "{'Rice Pudding'}, {'Strawberry'}"
+      best_gifts: "{'Rice Pudding'}, {'Strawberry'}",
+      about:"I am not really a spooky kinda dude"
     })
 
     const res = await request(app)
@@ -102,7 +108,8 @@ describe('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
-      best_gifts: "{'Ice Cream'}, {'Strawberry'}"
+      best_gifts: "{'Ice Cream'}, {'Strawberry'}",
+      about:"I am not really a spooky kinda dude"
     })
 
     const res = await request(app)
@@ -113,7 +120,8 @@ describe('backend routes', () => {
       address: "555 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
-      best_gifts: "{'Potato'}"
+      best_gifts: "{'Potato'}",
+      about:"I am not really a spooky kinda dude"
     })
 
     const expected = {
@@ -123,7 +131,8 @@ describe('backend routes', () => {
       address: "555 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
-      best_gifts: ["{'Potato'}"]
+      best_gifts: ["{'Potato'}"],
+      about:"I am not really a spooky kinda dude"
     }
 
     expect(res.body).toEqual(expected)
@@ -137,7 +146,8 @@ describe('backend routes', () => {
       address: "555 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
-      best_gifts: "{'Potato'}"
+      best_gifts: "{'Potato'}",
+      about:"I am not really a spooky kinda dude"
     })
 
     const res = await request(app).delete(`/api/v1/characters/${char.id}`)

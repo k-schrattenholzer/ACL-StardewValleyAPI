@@ -6,5 +6,6 @@ CREATE TABLE characters (
   birthday TEXT NOT NULL,
   address TEXT NOT NULL,
   elligible TEXT NOT NULL,
-  img TEXT NOT NULL
+  img TEXT NOT NULL,
+  best_gifts TEXT []
 );

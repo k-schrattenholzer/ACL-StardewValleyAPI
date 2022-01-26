@@ -1,6 +1,6 @@
-# backend-template
+# Stardew Valley API
 
-A starter template for Express projects at Alchemy Code Lab. We'll be using this in the "Backend / API" portion of the program.
+A RESTful API for Stardew Valley information. Currently limited to characters.
 
 ## Getting Started
 

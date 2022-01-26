@@ -13,29 +13,6 @@ describe('backend routes', () => {
     pool.end()
   })
 
-  const testChar2 = {
-    "name": "Assistant to the Dark Lord",
-    "birthday": "Summer 7",
-    "address": "777 Light Ln.",
-    "elligible": "false",
-    "img": "https://darklord.com/img/777.png",
-    "best_gifts": "{'Ice Cream'}, {'Strawberry'}"
-  }
-
-  const testChar3 = {
-    name: "Assistant to the Regional Dark Lord Assistant",
-    birthday: "Fall 4",
-    address: "777 Light Ln.",
-    elligible: "true",
-    img: "https://darklord.com/img/333.png",
-    best_gifts: "{'Rice Pudding'}, {'Strawberry'}"
-  }
-
-  const testArr = [
-    {...testChar2, id: '2'},
-    {...testChar3, id: '3'}
-  ]
-
   it('should create a character', async() => {
     const res = await request(app)
       .post('/api/v1/characters')
@@ -128,8 +105,6 @@ describe('backend routes', () => {
       best_gifts: "{'Ice Cream'}, {'Strawberry'}"
     })
 
-    console.log(char)
-
     const res = await request(app)
     .patch(`/api/v1/characters/${char.id}`)
     .send({
@@ -156,7 +131,14 @@ describe('backend routes', () => {
   })
 
   it('should delete a character', async() => {
-    const char = await Character.insert(testChar2)
+    const char = await Character.insert({
+      name: "Dark Lord Mgr",
+      birthday: "Summer 14",
+      address: "555 Light Ln.",
+      elligible: "false",
+      img: "https://darklord.com/img/777.png",
+      best_gifts: "{'Potato'}"
+    })
 
     const res = await request(app).delete(`/api/v1/characters/${char.id}`)
 

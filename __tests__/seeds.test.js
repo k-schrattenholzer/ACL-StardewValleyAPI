@@ -39,16 +39,29 @@ describe('backend routes', () => {
   })
 
   it('should get all seeds', async() => {
+
+    const sillySeed = await Seed.insert({
+          name: "Silly Seeds",
+          crop: "Silly",
+          abt: "Plant these in the never. Takes 1200 days to mature.",
+          sell_price: "40g",
+          img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
+        })
+
+    const melonSeed = {
+          name: "Melon Seeds",
+          crop: "Melon",
+          abt: "Plant these in the summer. Takes 12 days to mature.",
+          sell_price: "40g",
+          img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
+        }
+    
     const res = await request(app).get('/api/v1/seeds')
 
-    const seedList = [{
-      id: expect.any(String),
-      name: "Melon Seeds",
-      crop: "Melon",
-      abt: "Plant these in the summer. Takes 12 days to mature.",
-      sell_price: "40g",
-      img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
-    }]
+    const seedList = [
+      {...melonSeed, id: expect.any(String)},
+      {...sillySeed, id: expect.any(String)}
+    ]
 
     expect(res.body).toEqual(seedList)
   })

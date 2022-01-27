@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS characters;
 DROP TABLE IF EXISTS seeds;
 
 CREATE TABLE characters (
-  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name TEXT NOT NULL, 
   birthday TEXT NOT NULL,
   address TEXT NOT NULL,
@@ -23,7 +23,7 @@ INSERT INTO characters (name, birthday, address, elligible, img, best_gifts, abo
 );
 
 CREATE TABLE seeds (
-  id BIGINT GENERATED ALWAYS AS IDENTITY,
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name TEXT NOT NULL,
   crop TEXT NOT NULL,
   abt TEXT NOT NULL,

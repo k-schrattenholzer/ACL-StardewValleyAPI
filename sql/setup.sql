@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS characters, seeds, artifacts, forageables;
+DROP TABLE IF EXISTS characters, seeds, artifacts, forageables, weapons;
 
 CREATE TABLE characters (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

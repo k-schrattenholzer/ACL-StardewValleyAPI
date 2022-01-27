@@ -85,7 +85,38 @@ describe('backend routes', () => {
     }
 
     expect(res.body).toEqual(expectation)
+  })
+  
+  it('should update one seed', async() => {
+    const sillySeed = await Seed.insert({
+      name: "Silly Seeds",
+      crop: "Silly",
+      abt: "Plant these in the never. Takes 1200 days to mature.",
+      sell_price: "40g",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
+    })
 
-  }) 
+    const res = await request(app)
+      .patch(`/api/v1/seeds/${sillySeed.id}`)
+      .send({
+        name: "Silly Seeds",
+        crop: "Silly",
+        abt: "Plant these in the never. Takes 1200 days to mature.",
+        sell_price: "40g",
+        img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
+      })
+    
+    const expected = {
+      id: expect.any(String),
+      name: "Silly Seeds",
+      crop: "Silly",
+      abt: "Plant these in the never. Takes 1200 days to mature.",
+      sell_price: "40g",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
+    }
+
+    expect(res.body).toEqual(expected)
+    expect (await Seed.getById(sillySeed.id))
+  })
 
 });

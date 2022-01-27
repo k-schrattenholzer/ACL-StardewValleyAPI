@@ -54,3 +54,18 @@ INSERT INTO artifacts (name, abt, sell_price, img) VALUES (
   '40g',
   'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png' 
 );
+
+CREATE TABLE forageables (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name TEXT NOT NULL,
+  abt TEXT NOT NULL,
+  where_tofind TEXT [][],
+  img TEXT NOT NULL    
+);
+
+INSERT INTO forageables (name, abt, where_tofind, img) VALUES (
+  'Morel',
+  'Sought after for its unique nutty flavor.',
+  ARRAY ['{"Secret Woods", "32%"}', '{"Forest Farm", "25%"}'],
+  'https://stardewvalleywiki.com/mediawiki/images/b/b1/Morel.png'
+)

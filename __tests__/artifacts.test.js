@@ -80,4 +80,46 @@ describe('backend routes', () => {
 
     expect(res.body).toEqual(expectation)
   })
+  
+  it('should update one artifact', async() => {
+    const artifact = await Artifact.insert({
+      name: "Jazzy Artifact",
+      abt: "Alll about this jazzy artifact",
+      sell_price: "15g",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png'
+    })
+
+    const res = await request(app)
+      .patch(`/api/v1/artifacts/${artifact.id}`)
+      .send({
+        name: "Jazzy Artifact 2.0",
+        abt: "Alll about this jazzy artifact. Even more about it!",
+        sell_price: "25g",
+        img: 'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png'
+      })
+    
+    const expected = {
+      id: expect.any(String),
+      name: "Jazzy Artifact 2.0",
+      abt: "Alll about this jazzy artifact. Even more about it!",
+      sell_price: "25g",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png'
+    }
+
+    expect(res.body).toEqual(expected)
+    expect (await Artifact.getById(artifact.id))
+  })
+
+  it('should delete a artifact', async() => {
+    const artifact = await Artifact.insert({
+      name: "Jazzy Artifact",
+      abt: "Alll about this jazzy artifact",
+      sell_price: "15g",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png'
+    })
+
+    const res = await request(app).delete(`/api/v1/artifacts/${artifact.id}`)
+
+    expect(res.body).toEqual(artifact)
+  })
 });

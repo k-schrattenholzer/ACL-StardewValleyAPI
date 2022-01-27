@@ -34,29 +34,29 @@ describe('backend routes', () => {
       expect(res.body).toEqual(expectation)
   })
 
-  // it('should get one forageable by ID', async() => {
-  //   const forageable = await Forageable.insert({
-  //     name: 'Daffodil',
-  //     abt: 'A traditional spring flower that makes a nice gift.',
-  //     where_tofind: '{{"Pelican Town", "100%"}, {"Bus Stop", "45%"}, {"Railroad", "45%"}}',
-  //     img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
-  //   })
+  it('should get one forageable by ID', async() => {
+    const forageable = await Forageable.insert({
+      name: 'Daffodil',
+      abt: 'A traditional spring flower that makes a nice gift.',
+      where_tofind: '{{"Pelican Town", "100%"}, {"Bus Stop", "45%"}, {"Railroad", "45%"}}',
+      img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
+    })
 
-  //   const res = await request(app)
-  //   .get(`/api/v1/forageabless/${forageable.id}`)
+    const res = await request(app)
+    .get(`/api/v1/forageables/${forageable.id}`)
     
-  //   const expectation = {
-  //     id: expect.any(String),
-  //     name: 'Daffodil',
-  //     abt: 'A traditional spring flower that makes a nice gift.',
-  //     where_tofind:["{{\"Pelican Town\", \"100%\"}, {\"Bus Stop\", \"45%\"}, {\"Railroad\", \"45%\"}}"],
-  //     img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
-  //   }
+    const expectation = {
+      id: expect.any(String),
+      name: 'Daffodil',
+      abt: 'A traditional spring flower that makes a nice gift.',
+      where_tofind:["{{\"Pelican Town\", \"100%\"}, {\"Bus Stop\", \"45%\"}, {\"Railroad\", \"45%\"}}"],
+      img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
+    }
 
-  //   expect(res.body).toEqual(expectation)
+    expect(res.body).toEqual(expectation)
 
-  //   await Forageable.deleteById(forageable.id)
-  // })
+    await Forageable.deleteById(forageable.id)
+  })
 
   // it('should get all forageables', async() => {
   //   const forageable1 = await Forageable.insert({

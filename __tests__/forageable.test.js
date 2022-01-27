@@ -96,45 +96,45 @@ describe('backend routes', () => {
     expect(res.body).toEqual(expectation)
   })
 
-  // it('should update a forageable', async() => {
-  //   const forageable1 = await Forageable.insert({
-  //     name: 'Daffodil',
-  //     abt: 'A traditional spring flower that makes a nice gift.',
-  //     where_tofind: ARRAY ['{"Pelican Town", "100%"}', '{"Bus Stop", "45%"}', '{"Railroad", "45%"}'],
-  //     img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
-  //   })
+  it('should update a forageable', async() => {
+    const forageable1 = await Forageable.insert({
+      name: 'Daffodil',
+      abt: 'A traditional spring flower that makes a nice gift.',
+      where_tofind: '{{"Pelican Town", "100%"}, {"Bus Stop", "45%"}, {"Railroad", "45%"}}',
+      img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
+    })
 
-  //   const res = await request(app)
-  //   .patch(`/api/v1/forageables/${forageable1.id}`)
-  //   .send({
-  //     name: 'Daffodil 2.0',
-  //     abt: 'Better than the traditional spring flower.',
-  //     where_tofind: ARRAY ['{"Pelican Town", "66%"}', '{"Bus Stop", "66%"}', '{"Railroad", "66%"}'],
-  //     img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
-  //   })
+    const res = await request(app)
+    .patch(`/api/v1/forageables/${forageable1.id}`)
+    .send({
+      name: 'Daffodil 2.0',
+      abt: 'Better than the traditional spring flower.',
+      where_tofind: '{{"Pelican Town", "66%"}, {"Bus Stop", "66%"}, {"Railroad", "66%"}}',
+      img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
+    })
 
-  //   const expected = {
-  //     id: expect.any(String),
-  //     name: 'Daffodil 2.0',
-  //     abt: 'Better than the traditional spring flower.',
-  //     where_tofind: ARRAY ['{"Pelican Town", "66%"}', '{"Bus Stop", "66%"}', '{"Railroad", "66%"}'],
-  //     img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
-  //   }
+    const expected = {
+      id: expect.any(String),
+      name: 'Daffodil 2.0',
+      abt: 'Better than the traditional spring flower.',
+      where_tofind: ["{{\"Pelican Town\", \"66%\"}, {\"Bus Stop\", \"66%\"}, {\"Railroad\", \"66%\"}}"],
+      img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
+    }
 
-  //   expect(res.body).toEqual(expected)
-  //   expect(await Forageable.getById(forageable1.id)).toEqual(expected)
-  // })
+    expect(res.body).toEqual(expected)
+    expect(await Forageable.getById(forageable1.id)).toEqual(expected)
+  })
 
-  // it('should delete a forageable', async() => {
-  //   const forageable1 = await Forageable.insert({
-  //     name: 'Daffodil',
-  //     abt: 'A traditional spring flower that makes a nice gift.',
-  //     where_tofind: ARRAY ['{"Pelican Town", "100%"}', '{"Bus Stop", "45%"}', '{"Railroad", "45%"}'],
-  //     img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
-  //   })
+  it('should delete a forageable', async() => {
+    const forageable1 = await Forageable.insert({
+      name: 'Daffodil',
+      abt: 'A traditional spring flower that makes a nice gift.',
+      where_tofind: ["{{\"Pelican Town\", \"100%\"}, {\"Bus Stop\", \"45%\"}, {\"Railroad\", \"45%\"}}"],
+      img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
+    })
 
-  //   const res = await request(app).delete(`/api/v1/forageables/${forageable1.id}`)
+    const res = await request(app).delete(`/api/v1/forageables/${forageable1.id}`)
 
-  //   expect(res.body).toEqual(char)
-  // })
+    expect(res.body).toEqual(forageable1)
+  })
 });

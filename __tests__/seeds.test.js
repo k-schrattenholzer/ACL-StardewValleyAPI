@@ -13,7 +13,7 @@ describe('backend routes', () => {
     pool.end()
   })
 
-  it.skip('should create a seed', async() => {
+  it('should create a seed', async() => {
     const res = await request(app)
       .post('/api/v1/seeds')
       .send({
@@ -25,7 +25,7 @@ describe('backend routes', () => {
       })
 
     const expectation = {
-      id: expect.any(Number),
+      id: expect.any(String),
       name: "Jazz Seeds",
       crop: "Blue Jazz",
       abt: "Plant these in the summer. Takes 12 days to mature.",

@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS characters;
-DROP TABLE IF EXISTS seeds;
-DROP TABLE IF EXISTS artifacts;
+DROP TABLE IF EXISTS characters, seeds, artifacts, forageables;
 
 CREATE TABLE characters (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,

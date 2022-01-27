@@ -58,26 +58,43 @@ describe('backend routes', () => {
     await Forageable.deleteById(forageable.id)
   })
 
-  // it('should get all forageables', async() => {
-  //   const forageable1 = await Forageable.insert({
-  //     name: 'Daffodil',
-  //     abt: 'A traditional spring flower that makes a nice gift.',
-  //     where_tofind: ARRAY ['{"Pelican Town", "100%"}', '{"Bus Stop", "45%"}', '{"Railroad", "45%"}'],
-  //     img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
-  //   })
+  it('should get all forageables', async() => {
+    const forageable1 = await Forageable.insert({
+      name: 'Daffodil',
+      abt: 'A traditional spring flower that makes a nice gift.',
+      where_tofind: '{{"Pelican Town", "100%"}, {"Bus Stop", "45%"}, {"Railroad", "45%"}}',
+      img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
+    })
 
-  //   const forageable2 = {
-  //     name: 'Morel',
-  //     abt: 'Sought after for its unique nutty flavor.',
-  //     where_tofind: ARRAY ['{"Secret Woods", "32%"}', '{"Forest Farm", "25%"}'],
-  //     img: 'https://stardewvalleywiki.com/mediawiki/images/b/b1/Morel.png'
-  //   }
+    const forageable2 = {
+      name: 'Morel',
+      abt: 'Sought after for its unique nutty flavor.',
+      where_tofind: '{{"Secret Woods", "32%"}, {"Forest Farm", "25%"}}',
+      img: 'https://stardewvalleywiki.com/mediawiki/images/b/b1/Morel.png'
+    }
 
-  //   const res = await request(app)
-  //   .get(`/api/v1/forageables`)
+    const expectation = [
+      {
+        id: expect.any(String),
+        name: 'Morel',
+        abt: 'Sought after for its unique nutty flavor.',
+        where_tofind: ["{\"Secret Woods\", \"32%\"}", "{\"Forest Farm\", \"25%\"}"],
+        img: 'https://stardewvalleywiki.com/mediawiki/images/b/b1/Morel.png'
+      },
+      {
+        id: expect.any(String),
+        name: 'Daffodil',
+        abt: 'A traditional spring flower that makes a nice gift.',
+        where_tofind: ["{{\"Pelican Town\", \"100%\"}, {\"Bus Stop\", \"45%\"}, {\"Railroad\", \"45%\"}}"],
+        img: 'https://stardewvalleywiki.com/mediawiki/images/4/4b/Daffodil.png'
+      }
+    ]
 
-  //   expect(res.body).toEqual([forageable2, {...forageable1, id: forageable1.id}])
-  // })
+    const res = await request(app)
+    .get(`/api/v1/forageables`)
+
+    expect(res.body).toEqual(expectation)
+  })
 
   // it('should update a forageable', async() => {
   //   const forageable1 = await Forageable.insert({

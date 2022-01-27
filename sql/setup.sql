@@ -66,4 +66,23 @@ INSERT INTO forageables (name, abt, where_tofind, img) VALUES (
   'Sought after for its unique nutty flavor.',
   ARRAY ['{"Secret Woods", "32%"}', '{"Forest Farm", "25%"}'],
   'https://stardewvalleywiki.com/mediawiki/images/b/b1/Morel.png'
-)
+);
+
+CREATE TABLE weapons (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  type TEXT NOT NULL,
+  name TEXT NOT NULL,  
+  level TEXT NOT NULL,  
+  abt TEXT NOT NULL,  
+  damage TEXT NOT NULL,
+  img TEXT NOT NULL  
+);
+
+INSERT INTO weapons (type, name, level, abt, damage, img) VALUES (
+  'Sword',
+  'Rusty Sword',
+  '1',
+  'A rusty, dull old sword.',
+  '2-5',
+  'https://stardewvalleywiki.com/mediawiki/images/d/d7/Rusty_Sword.png'
+);

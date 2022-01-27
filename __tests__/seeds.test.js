@@ -128,7 +128,7 @@ describe('backend routes', () => {
       img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
     })
 
-    const res = await request(app.delete(`/api/v1/seed/${sillySeed.id}`))
+    const res = await request(app).delete(`/api/v1/seeds/${sillySeed.id}`)
 
     expect(res.body).toEqual(sillySeed)
   })

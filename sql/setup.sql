@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS characters;
 DROP TABLE IF EXISTS seeds;
+DROP TABLE IF EXISTS artifacts;
 
 CREATE TABLE characters (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -37,4 +38,19 @@ INSERT INTO seeds (name, crop, abt, sell_price, img) VALUES (
   'Plant these in the summer. Takes 12 days to mature.',
   '40g',
   'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png' 
-)
+);
+
+CREATE TABLE artifacts (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name TEXT NOT NULL,
+  abt TEXT NOT NULL,
+  sell_price TEXT NOT NULL,
+  img TEXT NOT NULL    
+);
+
+INSERT INTO artifacts (name, abt, sell_price, img) VALUES (
+  'Chipped Amphora',
+  'An ancient vessel made of ceramic material. Used to transport both dry and wet goods.',
+  '40g',
+  'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png' 
+);

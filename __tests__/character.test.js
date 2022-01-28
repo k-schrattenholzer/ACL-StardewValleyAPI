@@ -79,7 +79,7 @@ describe('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
-      best_gifts: "{'Ice Cream'}, {'Strawberry'}",
+      best_gifts: "'Ice Cream', 'Strawberry'",
       about:"I am not really a spooky kinda dude"
     })
     const char2 = await Character.insert({
@@ -88,14 +88,32 @@ describe('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "true",
       img: "https://darklord.com/img/333.png",
-      best_gifts: "{'Rice Pudding'}, {'Strawberry'}",
+      best_gifts: "'Rice Pudding', 'Strawberry'",
       about:"I am not really a spooky kinda dude"
     })
 
     const res = await request(app)
     .get(`/api/v1/characters`)
 
-    expect(res.body).toEqual([{...char1, id: char1.id}, {...char2, id: char2.id}])
+    const krobus = {
+        "about": "Krobus is the only friendly monster players will encounter, however he still refers to other hostile monsters as his friends. He is a shadow person who lives in the sewers. He sells a variety of rare goods. He is also available as a roommate.",
+        "address": "Krobus\" shop",
+        "best_gifts": [
+          "Diamond",
+          "Iridium Bar",
+          "Pumpkin",
+          "Void Egg",
+          "Void Mayonnaise",
+          "Wild Horseradish",
+        ],
+        "birthday": "Winter 1",
+        "elligible": "false",
+        "id": "1",
+        "img": "https://stardewvalleywiki.com/mediawiki/images/7/71/Krobus.png",
+        "name": "Krobus",
+      }
+
+    expect(res.body).toEqual([krobus, {...char1, id: char1.id}, {...char2, id: char2.id}])
 
     await Character.deleteById(char1.id)
     await Character.deleteById(char2.id)

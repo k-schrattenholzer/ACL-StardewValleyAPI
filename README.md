@@ -1,6 +1,6 @@
 # Stardew Valley API
 
-A RESTful API for Stardew Valley information. Currently limited to characters.
+A RESTful API for Stardew Valley information.
 
 ## Getting Started
 

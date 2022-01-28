@@ -128,4 +128,19 @@ describe('backend routes', () => {
     expect (await Weapon.getById(weapon.id))
   })
 
+  it('should delete a seed', async() => {
+    const weapon = await Weapon.insert({
+      type: 'Sword',
+      name: "Neptune's Glaive",
+      level: "5",
+      abt: "An heirloom from beyond the Gem Sea.",
+      damage: ".02",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/2/26/Neptune%27s_Glaive.png'
+    })
+
+    const res = await request(app).delete(`/api/v1/weapons/${weapon.id}`)
+
+    expect(res.body).toEqual(weapon)
+  })
+
 });

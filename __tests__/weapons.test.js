@@ -39,7 +39,6 @@ describe('backend routes', () => {
   })
 
   it('should get all weapons', async() => {
-
     const weapon = await Weapon.insert({
       type: 'Sword',
       name: "Neptune's Glaive",
@@ -66,6 +65,32 @@ describe('backend routes', () => {
     ]
 
     expect(res.body).toEqual(weaponList)
+  })
+
+  it('should get one weapon by ID', async() => {
+
+    const weapon = await Weapon.insert({
+      type: 'Sword',
+      name: "Neptune's Glaive",
+      level: "5",
+      abt: "An heirloom from beyond the Gem Sea.",
+      damage: ".02",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/2/26/Neptune%27s_Glaive.png'
+    })
+
+    const res = await request(app).get(`/api/v1/weapons/${weapon.id}`)
+
+    const expectation = {
+      id: expect.any(String),
+      type: 'Sword',
+      name: "Neptune's Glaive",
+      level: "5",
+      abt: "An heirloom from beyond the Gem Sea.",
+      damage: ".02",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/2/26/Neptune%27s_Glaive.png'
+    }
+
+    expect(res.body).toEqual(expectation)
   })
 
 });

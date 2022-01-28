@@ -1,0 +1,27 @@
+body {
+  font-family: 'Nunito', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-image: url('https://stardewvalleywiki.com/mediawiki/images/6/68/Main_Logo.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 250px;
+  height: 20vh;
+  width: 100vw;
+}
+
+li {
+  list-style-type: none;
+}
+
+footer {
+  width: 100vw;
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1%;
+}

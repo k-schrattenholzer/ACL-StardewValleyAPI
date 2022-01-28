@@ -51,18 +51,18 @@ describe('backend routes', () => {
 
     const seedWeapon = {
       type: 'Sword',
-      name: "Neptune's Glaive",
-      level: "5",
-      abt: "An heirloom from beyond the Gem Sea.",
-      damage: ".02",
-      img: 'https://stardewvalleywiki.com/mediawiki/images/2/26/Neptune%27s_Glaive.png'
+      name: "Rusty Sword",
+      level: "1",
+      abt: "A rusty, dull old sword.",
+      damage: "2-5",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/d/d7/Rusty_Sword.png'
         }
     
     const res = await request(app).get('/api/v1/weapons')
 
     const weaponList = [
-      {...weapon, id: expect.any(String)},
-      {...seedWeapon, id: expect.any(String)}
+      {...seedWeapon, id: expect.any(String)},
+      {...weapon, id: expect.any(String)}
     ]
 
     expect(res.body).toEqual(weaponList)

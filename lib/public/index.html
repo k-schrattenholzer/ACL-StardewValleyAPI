@@ -14,34 +14,78 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <header > </header>
-    <h1>A RESTful API for information on Stardew Valley.</h1>
-    <h2>Current Routes</h2>
-    <div>
-      <ul>
-        <h4 for="character-routes">Character Routes</h4>
-        <li>/api/v1/characters</li>
-        <li>/api/v1/characters/:id</li>
+    <header></header>
+    <main>
+      <div class='title'>
+        <h1>A RESTful API for information on Stardew Valley.</h1>
+      </div>
+      <div >
+        <h2>Current Routes</h2>
+        <ul class='routes'> 
+          <article class='routeContainer'>
+            <h4 for="character-routes">Characters</h4>
+            <li>/api/v1/characters</li>
+            <li>/api/v1/characters/:id</li>
+            <br />
+            <li class='example'>Example Request:
+              <pre>
+                    https://stardewvalley-api.herokuapp.com/api/v1/characters
+              </pre>
+            </li>
+          </article>
 
-        <h4 for="artifact-routes">Artifact Routes</h4>
-        <li>/api/v1/artifacts</li>
-        <li>/api/v1/artifacts/:id</li>
+          <article class='routeContainer'>
+            <h4 for="artifact-routes">Artifacts</h4>
+            <li>/api/v1/artifacts</li>
+            <li>/api/v1/artifacts/:id</li>
+            <br />
+            <li class='example'>Example Request:
+              <pre>
+                    https://stardewvalley-api.herokuapp.com/api/v1/artifacts
+              </pre>
+            </li>
+          </article>
 
-        <h4 for="seed-routes">Seed Routes</h4>
-        <li>/api/v1/seeds</li>
-        <li>/api/v1/seeds/:id</li>
+          <article class='routeContainer'>
+            <h4 for="seed-routes">Seeds</h4>
+            <li>/api/v1/seeds</li>
+            <li>/api/v1/seeds/:id</li>
+            <br />
+            <li class='example'>Example Request:
+              <pre>
+                    https://stardewvalley-api.herokuapp.com/api/v1/seeds
+              </pre>
+            </li>
+          </article>
 
-        <h4 for="forageable-routes">Forageables Routes</h4>
-        <li>/api/v1/forageables</li>
-        <li>/api/v1/forageables/:id</li>
+          <article class='routeContainer'>
+            <h4 for="forageable-routes">Forageables</h4>
+            <li>/api/v1/forageables</li>
+            <li>/api/v1/forageables/:id</li>
+            <br />
+            <li class='example'>Example Request:
+              <pre>
+                    https://stardewvalley-api.herokuapp.com/api/v1/forageables
+              </pre>
+            </li>
+          </article>
 
-        <h4 for="weapon-routes">Weapons Routes</h4>
-        <li>/api/v1/weapons</li>
-        <li>/api/v1/weapons/:id</li>
-      </ul>
-    </div>
+          <article class='routeContainer'>
+            <h4 for="weapon-routes">Weapons</h4>
+            <li>/api/v1/weapons</li>
+            <li>/api/v1/weapons/:id</li>
+            <br />
+            <li class='example'>Example Request:
+              <pre>
+                    https://stardewvalley-api.herokuapp.com/api/v1/weapons
+              </pre>
+            </li>
+          </article>
+        </ul>
+      </div>      
+    </main>
+    <footer>
+      This API was built by a&nbsp;<a href="https://github.com/k-schrattenholzer">{ long-time fan and player }</a>. Stardew Valley was developed by&nbsp;<a href="https://stardewvalleywiki.com/ConcernedApe">{ Concerned Ape }</a>.
+    </footer>
   </body>
-  <footer>
-    This API was built by a&nbsp;<a href="https://github.com/k-schrattenholzer">long-time fan and player</a>. However, Stardew Valley was lovingly developed by&nbsp;<a href="https://stardewvalleywiki.com/ConcernedApe">Concerned Ape</a>.
-  </footer>
   </html>

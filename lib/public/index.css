@@ -61,22 +61,12 @@ ul > article {
 li {
   list-style-type: none;
   gap: 35px;
+  padding-left: 40px;
 }
 
 a {
   text-decoration: none;
   color: rgba(210, 247, 245, 0.815);
-}
-
-pre code {
-  display: block;
-  background: none;
-  white-space: pre;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: scroll;
-  max-width: 100%;
-  min-width: 100px;
-  padding: 0;
 }
 
 footer {
@@ -93,6 +83,18 @@ footer > p {
   font-size: 14px;
   padding-top: 1.5px;
   padding-bottom: 1.5px;
+}
+
+.request, .response {
+  background: none;
+  max-width: 100%;
+  min-width: 100px;
+  padding: 0;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  word-wrap: break-word;
+  font-family: "Lucida Console", "Courier", monospace;
+  font-size: 13px;
 }
 
 .routes {

@@ -17,7 +17,7 @@
     <header></header>
     <main>
       <div class='title'>
-        <h1>A RESTful API for information on Stardew Valley.</h1>
+        <h1>A RESTful API for Stardew Valley info.</h1>
       </div>
       <div >
         <h2>Current Routes</h2>
@@ -27,10 +27,31 @@
             <li>/api/v1/characters</li>
             <li>/api/v1/characters/:id</li>
             <br />
-            <li class='example'>Example Request:
-              <pre>
-                    https://stardewvalley-api.herokuapp.com/api/v1/characters
-              </pre>
+            <li >Example Request:
+              <p class='request'>
+                    https://stardewvalley-api.herokuapp.com/api/v1/characters/1
+              </p>
+            </li>
+            <li>Example Response:
+              <p class='response'> 
+                {
+                  "id": "1",
+                  "name": "Krobus",
+                  "birthday": "Winter 1",
+                  "address": "Krobus\" shop",
+                  "elligible": "false",
+                  "img": "https://stardewvalleywiki.com/mediawiki/images/7/71/Krobus.png",
+                  "best_gifts": [
+                    "Diamond",
+                    "Iridium Bar",
+                    "Pumpkin",
+                    "Void Egg",
+                    "Void Mayonnaise",
+                    "Wild Horseradish"
+                  ],
+                  "about": "Krobus is the only friendly monster players will encounter, however he still refers to other hostile monsters as his friends. He is a shadow person who lives in the sewers. He sells a variety of rare goods. He is also available as a roommate."
+                }
+              </p>
             </li>
           </article>
 
@@ -39,10 +60,21 @@
             <li>/api/v1/artifacts</li>
             <li>/api/v1/artifacts/:id</li>
             <br />
-            <li class='example'>Example Request:
-              <pre>
-                    https://stardewvalley-api.herokuapp.com/api/v1/artifacts
-              </pre>
+            <li >Example Request:
+              <p class='request'>
+                    https://stardewvalley-api.herokuapp.com/api/v1/artifacts/1
+              </p>
+            </li>
+            <li>Example Response:
+              <p class='response'> 
+                {
+                  "id": "1",
+                  "name": "Chipped Amphora",
+                  "abt": "An ancient vessel made of ceramic material. Used to transport both dry and wet goods.",
+                  "sell_price": "40g",
+                  "img": "https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png"
+                }
+              </p>
             </li>
           </article>
 
@@ -51,10 +83,22 @@
             <li>/api/v1/seeds</li>
             <li>/api/v1/seeds/:id</li>
             <br />
-            <li class='example'>Example Request:
-              <pre>
-                    https://stardewvalley-api.herokuapp.com/api/v1/seeds
-              </pre>
+            <li >Example Request:
+              <p class='request'>
+                    https://stardewvalley-api.herokuapp.com/api/v1/seeds/1
+              </p>
+            </li>
+            <li>Example Response:
+              <p class='response'> 
+                {
+                  "id": "1",
+                  "name": "Melon Seeds",
+                  "crop": "Melon",
+                  "abt": "Plant these in the summer. Takes 12 days to mature.",
+                  "sell_price": "40g",
+                  "img": "https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png"
+                }
+              </p>
             </li>
           </article>
 
@@ -63,22 +107,49 @@
             <li>/api/v1/forageables</li>
             <li>/api/v1/forageables/:id</li>
             <br />
-            <li class='example'>Example Request:
-              <pre>
-                    https://stardewvalley-api.herokuapp.com/api/v1/forageables
-              </pre>
+            <li >Example Request:
+              <p class='request'>
+                    https://stardewvalley-api.herokuapp.com/api/v1/forageables/1
+              </p>
+            </li>
+            <li>Example Response:
+              <p class='response'> 
+                {
+                  "id": "1",
+                  "name": "Morel",
+                  "abt": "Sought after for its unique nutty flavor.",
+                  "where_tofind": [
+                    "{\"Secret Woods\", \"32%\"}",
+                    "{\"Forest Farm\", \"25%\"}"
+                  ],
+                  "img": "https://stardewvalleywiki.com/mediawiki/images/b/b1/Morel.png"
+                }
+              </p>
             </li>
           </article>
-
+          
           <article class='routeContainer'>
             <h4 for="weapon-routes">Weapons</h4>
             <li>/api/v1/weapons</li>
             <li>/api/v1/weapons/:id</li>
             <br />
-            <li class='example'>Example Request:
-              <pre>
-                    https://stardewvalley-api.herokuapp.com/api/v1/weapons
-              </pre>
+            <li >Example Request:
+              <p class='request'>
+                https://stardewvalley-api.herokuapp.com/api/v1/weapons/1
+              </p>
+            </li>
+            <li>Example Response:
+              <p class='response'> 
+                {
+                  "id": "1",
+                  "type": "Sword",
+                  "name": "Rusty Sword",
+                  "level": "1",
+                  "abt": "A rusty, dull old sword.",
+                  "damage": "2-5",
+                  "img": "https://stardewvalleywiki.com/mediawiki/images/d/d7/Rusty_Sword.png"
+                }
+              </p>
             </li>
           </article>
         </ul>

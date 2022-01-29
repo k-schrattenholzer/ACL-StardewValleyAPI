@@ -73,11 +73,16 @@ footer {
   width: 100vw;
   bottom: 0px;
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  padding-top: 1%;
-  padding-bottom: 1%;
   background-color: #0c083bdc;  
+}
+
+footer > p {
   color: white;
+  font-size: 14px;
+  padding-top: 1.5px;
+  padding-bottom: 1.5px;
 }
 
 .request, .response {

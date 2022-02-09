@@ -130,6 +130,9 @@ describe('backend routes', () => {
   })
   
   it('should update one artifact if a user is logged in with the admin role', async() => {
+
+    const [agent, user] = await registerAndSignInUser({ role: 'admin'});
+
     const artifact = await Artifact.insert({
       name: "Jazzy Artifact",
       abt: "Alll about this jazzy artifact",
@@ -137,7 +140,7 @@ describe('backend routes', () => {
       img: 'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png'
     })
 
-    const res = await request(app)
+    const res = await agent
       .patch(`/api/v1/artifacts/${artifact.id}`)
       .send({
         name: "Jazzy Artifact 2.0",

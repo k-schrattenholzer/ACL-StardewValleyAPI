@@ -3,6 +3,28 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Artifact = require('../lib/models/Artifact.js');
+const UserService = require('../lib/services/UserService.js');
+
+const testUser = {
+  role: 'user',
+  name: 'Dinky Kong',
+  email: 'dinky@kong.com',
+  password: '12345'
+};
+
+const registerAndSignInUser = async (userProps = {}) => {
+  const password = userProps.password ?? testUser.password
+
+  const agent = request.agent(app)
+
+  const user = await UserService.create({ ...testUser, ...userProps })
+
+  const { email } = user
+
+  await agent.post('/api/v1/users/sessions').send({ email, password })
+
+  return [agent, user]
+};
 
 describe('backend routes', () => {
   beforeEach(() => {
@@ -13,8 +35,11 @@ describe('backend routes', () => {
     pool.end()
   })
 
-  it('should create an artifact', async() => {
-    const res = await request(app)
+  it('should create an artifact if a user is logged in with the admin role', async() => {
+
+    const [agent, user] = await registerAndSignInUser({ role: 'admin'});
+
+    const res = await agent
       .post('/api/v1/artifacts')
       .send({
         name: "Jazzy Artifact",
@@ -35,6 +60,29 @@ describe('backend routes', () => {
 
       // await Seed.deleteById(res.body.id)
   })
+
+  // it('should error if attempting to post from a user without the admin role', async() => {
+  //   const res = await request(app)
+  //     .post('/api/v1/artifacts')
+  //     .send({
+  //       name: "Jazzy Artifact",
+  //       abt: "Alll about this jazzy artifact",
+  //       sell_price: "15g",
+  //       img: 'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png'
+  //     })
+
+  //   const expectation = {
+  //     id: expect.any(String),
+  //     name: "Jazzy Artifact",
+  //     abt: "Alll about this jazzy artifact",
+  //     sell_price: "15g",
+  //     img: 'https://stardewvalleywiki.com/mediawiki/images/9/9e/Chipped_Amphora.png'
+  //   }
+
+  //     expect(res.body).toEqual(expectation)
+
+  //     // await Seed.deleteById(res.body.id)
+  // })
 
   it('should get all artifacts', async() => {
 
@@ -81,7 +129,7 @@ describe('backend routes', () => {
     expect(res.body).toEqual(expectation)
   })
   
-  it('should update one artifact', async() => {
+  it('should update one artifact if a user is logged in with the admin role', async() => {
     const artifact = await Artifact.insert({
       name: "Jazzy Artifact",
       abt: "Alll about this jazzy artifact",
@@ -110,7 +158,7 @@ describe('backend routes', () => {
     expect (await Artifact.getById(artifact.id))
   })
 
-  it('should delete a artifact', async() => {
+  it('should delete a artifact if a user is logged in with the admin role', async() => {
     const artifact = await Artifact.insert({
       name: "Jazzy Artifact",
       abt: "Alll about this jazzy artifact",

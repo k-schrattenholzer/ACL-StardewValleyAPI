@@ -47,7 +47,7 @@ describe('backend user routes', () => {
 
   it('creates a new user', async () => {
     const res = await request(app).post('/api/v1/users/register').send(testUser)
-    console.log(res.body)
+
     const { role, name, email } = testUser
 
     expect(res.body).toEqual({

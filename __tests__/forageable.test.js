@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Forageable = require('../lib/models/Forageable.js');
 
-describe('backend routes', () => {
+describe.skip('backend routes', () => {
   beforeEach(() => {
     return setup(pool)
   })

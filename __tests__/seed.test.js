@@ -13,7 +13,7 @@ describe('backend routes', () => {
     pool.end()
   })
 
-  it('should create a seed', async() => {
+  it.skip('should create a seed', async() => {
     const res = await request(app)
       .post('/api/v1/seeds')
       .send({

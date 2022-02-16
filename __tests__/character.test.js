@@ -3,6 +3,28 @@ const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
 const Character = require('../lib/models/Character.js');
+const UserService = require('../lib/services/UserService.js');
+
+const testUser = {
+  role: 'user',
+  name: 'Dinky Kong',
+  email: 'dinky@kong.com',
+  password: '12345'
+};
+
+const registerAndSignInUser = async (userProps = {}) => {
+  const password = userProps.password ?? testUser.password
+
+  const agent = request.agent(app)
+
+  const user = await UserService.create({ ...testUser, ...userProps })
+
+  const { email } = user
+
+  await agent.post('/api/v1/users/sessions').send({ email, password })
+
+  return [agent, user]
+};
 
 describe('backend routes', () => {
   beforeEach(() => {
@@ -13,8 +35,10 @@ describe('backend routes', () => {
     pool.end()
   })
 
-  it('should create a character', async() => {
-    const res = await request(app)
+  it('should create a character when user is logged in with the admin role', async() => {
+    const [agent, user] = await registerAndSignInUser({ role: 'admin'});
+
+    const res = await agent
       .post('/api/v1/characters')
       .send({
         name: "The Dark Lord",
@@ -119,7 +143,7 @@ describe('backend routes', () => {
     await Character.deleteById(char2.id)
   })
 
-  it('should update a character', async() => {
+  it('should update a character when user is logged in with the admin role', async() => {
     const char = await Character.insert({
       name: "Assistant to the Dark Lord",
       birthday: "Summer 7",
@@ -130,7 +154,9 @@ describe('backend routes', () => {
       about:"I am not really a spooky kinda dude"
     })
 
-    const res = await request(app)
+    const [agent, user] = await registerAndSignInUser({ role: 'admin'});
+
+    const res = await agent
     .patch(`/api/v1/characters/${char.id}`)
     .send({
       name: "Dark Lord Mgr",
@@ -157,7 +183,7 @@ describe('backend routes', () => {
     expect(await Character.getById(char.id)).toEqual(expected)
   })
 
-  it('should delete a character', async() => {
+  it('should delete a character when user is logged in with the admin role', async() => {
     const char = await Character.insert({
       name: "Dark Lord Mgr",
       birthday: "Summer 14",
@@ -168,7 +194,9 @@ describe('backend routes', () => {
       about:"I am not really a spooky kinda dude"
     })
 
-    const res = await request(app).delete(`/api/v1/characters/${char.id}`)
+    const [agent, user] = await registerAndSignInUser({ role: 'admin'});
+
+    const res = await agent.delete(`/api/v1/characters/${char.id}`)
 
     expect(res.body).toEqual(char)
   })

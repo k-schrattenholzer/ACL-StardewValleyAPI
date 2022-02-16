@@ -9,7 +9,7 @@ const testUser = {
   role: 'user',
   name: 'Judy Gemstone',
   email: 'dinky@kong.com',
-  password: '12345',
+  password: '12345'
 }
 
 const testAdminUser = {
@@ -36,7 +36,7 @@ const registerAndSignIn = async (userProps = {}) => {
 const agent = request.agent(app)
 
 
-describe('backend user routes', () => {
+describe.only('backend user routes', () => {
   beforeEach(() => {
     return setup(pool)
   })
@@ -49,10 +49,10 @@ describe('backend user routes', () => {
     const res = await request(app).post('/api/v1/users/register').send(testUser)
 
     const { role, name, email } = testUser
-
+    console.log(res.body)
     expect(res.body).toEqual({
       id: expect.any(String),
-      role: 'user', 
+      role, 
       name,
       email,
     })

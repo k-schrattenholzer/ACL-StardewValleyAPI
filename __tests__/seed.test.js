@@ -62,6 +62,22 @@ describe('backend routes', () => {
       // await Seed.deleteById(res.body.id)
   })
 
+  it('should throw a 403 when posting with user role', async() => {
+    const [agent, user] = await registerAndSignInUser();
+
+    const error = await agent
+      .post('/api/v1/seeds')
+      .send({
+        name: "Jazz Seeds",
+        crop: "Blue Jazz",
+        abt: "Plant these in the summer. Takes 12 days to mature.",
+        sell_price: "15g",
+        img: 'https://stardewvalleywiki.com/mediawiki/images/9/95/Jazz_Seeds.png'
+      })
+
+      expect(error.body).toEqual({ message: "You do not have access to view this page", status: 403,})
+  })
+
   it('should get all seeds', async() => {
 
     const sillySeed = await Seed.insert({
@@ -143,6 +159,30 @@ describe('backend routes', () => {
 
     expect(res.body).toEqual(expected)
     expect (await Seed.getById(sillySeed.id))
+  })
+
+  it('should throw a 403 when trying to update a seed with the user role', async() => {
+    const sillySeed = await Seed.insert({
+      name: "Silly Seeds",
+      crop: "Silly",
+      abt: "Plant these in the never. Takes 1200 days to mature.",
+      sell_price: "40g",
+      img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
+    })
+
+    const [agent, user] = await registerAndSignInUser();
+
+    const res = await agent
+      .patch(`/api/v1/seeds/${sillySeed.id}`)
+      .send({
+        name: "Silly Seeds",
+        crop: "Silly",
+        abt: "Plant these in the never. Takes 1200 days to mature.",
+        sell_price: "40g",
+        img: 'https://stardewvalleywiki.com/mediawiki/images/5/5e/Melon_Seeds.png'
+      })
+
+    expect(res.body).toEqual({ message: "You do not have access to view this page", status: 403,})
   })
 
   it('should delete a seed user is logged in with the admin role', async() => {

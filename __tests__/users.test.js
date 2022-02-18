@@ -49,7 +49,7 @@ describe.only('backend user routes', () => {
     const res = await request(app).post('/api/v1/users/register').send(testUser)
 
     const { role, name, email } = testUser
-    console.log(res.body)
+
     expect(res.body).toEqual({
       id: expect.any(String),
       role, 
@@ -58,7 +58,7 @@ describe.only('backend user routes', () => {
     })
   })
 
-  it('logs a user in', async () => {
+  it.skip('logs a user in', async () => {
     const [agent] = await registerAndSignIn()
 
     const res = await agent.post('/api/v1/users/sessions').send(testUser);

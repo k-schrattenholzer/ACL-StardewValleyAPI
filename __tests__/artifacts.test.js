@@ -26,7 +26,7 @@ const registerAndSignInUser = async (userProps = {}) => {
   return [agent, user]
 };
 
-describe('backend routes', () => {
+describe.skip('backend routes', () => {
   beforeEach(() => {
     return setup(pool)
   })

@@ -4,6 +4,10 @@
   "description": "",
   "main": "server.js",
   "type": "commonjs",
+  "engines": {
+    "npm": "9.8.1",
+    "node": "16.14.2"
+  },
   "scripts": {
     "test": "jest --verbose --runInBand --testLocationInResults --setupFiles dotenv/config",
     "test:watch": "npm run test -- --watch",
@@ -39,6 +43,7 @@
     "dotenv": "^14.3.2",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.7.1"
+    "pg": "^8.7.1",
+    "serve": "^14.2.1"
   }
 }

@@ -103,7 +103,11 @@ describe.skip('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "false",
       img: "https://darklord.com/img/777.png",
+<<<<<<< HEAD:__tests__/character.test.js
       best_gifts: "'Ice Cream', 'Strawberry'",
+=======
+      best_gifts: "{'Ice Cream'}, {'Strawberry'}",
+>>>>>>> 429ccf3 (added about field to db):__tests__/app.test.js
       about:"I am not really a spooky kinda dude"
     })
     const char2 = await Character.insert({
@@ -112,7 +116,11 @@ describe.skip('backend routes', () => {
       address: "777 Light Ln.",
       elligible: "true",
       img: "https://darklord.com/img/333.png",
+<<<<<<< HEAD:__tests__/character.test.js
       best_gifts: "'Rice Pudding', 'Strawberry'",
+=======
+      best_gifts: "{'Rice Pudding'}, {'Strawberry'}",
+>>>>>>> 429ccf3 (added about field to db):__tests__/app.test.js
       about:"I am not really a spooky kinda dude"
     })
 

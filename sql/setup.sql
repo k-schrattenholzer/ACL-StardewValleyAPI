@@ -22,6 +22,7 @@ CREATE TABLE characters (
   img TEXT NOT NULL,
   best_gifts TEXT [],
   about TEXT NOT NULL
+<<<<<<< HEAD
 );
 
 INSERT INTO characters (name, birthday, address, elligible, img, best_gifts, about) VALUES (
@@ -98,4 +99,6 @@ INSERT INTO weapons (type, name, level, abt, damage, img) VALUES (
   'A rusty, dull old sword.',
   '2-5',
   'https://stardewvalleywiki.com/mediawiki/images/d/d7/Rusty_Sword.png'
+=======
+>>>>>>> 429ccf3 (added about field to db)
 );
